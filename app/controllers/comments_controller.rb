@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
 
+	def new
+		@comment = Comment.new
+		@comment.article_id = @article.id
+	end	
+	
 	def create
 	  	@comment = Comment.new(comment_params)
 	  	@comment.article_id = params[:article_id]
@@ -12,5 +17,5 @@ class CommentsController < ApplicationController
 	def comment_params
 	 	params.require(:comment).permit(:author_name, :body)
 	end
-	
+
 end
